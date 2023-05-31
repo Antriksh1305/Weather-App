@@ -18,7 +18,8 @@ import Drizzle from '../assets/images/drizzle';
 import Rain from '../assets/images/rain';
 import Thunderstorm from '../assets/images/thunderstorm';
 import Snow from '../assets/images/snow';
-
+import Humidity from '../assets/images/humidity';
+import Dewpoint from '../assets/images/dewpoint';
 // import { Image } from 'expo-image';
 
 export default function main() {
@@ -28,9 +29,7 @@ export default function main() {
         'NotoSans-SemiBold': require("../assets/fonts/NotoSans-SemiBold.ttf"),
         'NotoSans-Bold': require("../assets/fonts/NotoSans-Bold.ttf"),
         'NotoSans-ExtraBold': require("../assets/fonts/NotoSans-ExtraBold.ttf"),
-        'Penta-Bold': require("../assets/fonts/Penta-Rounded-Bold.ttf"),
     });
-
     useEffect(() => {
         async function prepare() {
             await SplashScreen.preventAutoHideAsync();
@@ -56,11 +55,11 @@ export default function main() {
                     <ClearDay style={styles.weathersvgstyle} />
                     <View style={[styles.container, styles.detailswrapper]}>
                         <View style={[styles.container, styles.temperature]}>
-                            <Text style={[styles.commontxt, { fontFamily: 'NotoSans-Bold' }, styles.temptext]}>11</Text>
-                            <Text style={[styles.commontxt, { fontFamily: 'NotoSans-Bold' }, styles.degreesymbol]}>°</Text>
+                            <Text style={[styles.commontxt, { fontFamily: 'NotoSans-Bold' }, { fontSize: 160, }]}>11</Text>
+                            <Text style={[styles.commontxt, styles.degreesymbol]}>°</Text>
                         </View>
                         <View style={styles.details}>
-                            <Text style={[styles.commontxt, { fontFamily: 'NotoSans-Regular', fontSize: 26 }]}>Clear Sky</Text>
+                            <Text style={[styles.commontxt, { fontFamily: 'NotoSans-Regular', fontSize: 26 }]}>Sunny Day</Text>
                             <Text style={[styles.commontxt, { fontFamily: 'NotoSans-Regular' }]}>Monday, 29 May</Text>
                         </View>
                     </View>
@@ -68,19 +67,19 @@ export default function main() {
                 <View style={[styles.container, styles.contentwrapper]}>
                     <View style={styles.content}>
                         <View style={styles.container}>
-                            <Feather name='wind' size={16} style={{ color: '#fff' }} />
-                            {/* <Text></Text> */}
-                            <Text style={styles.commontxt}>Wind Speed</Text>
+                            <Feather name='wind' size={24} style={{ color: '#fff' }} />
+                            <Text style={[{ fontSize: 14 }, styles.commontxt]}>13 km/h</Text>
+                            <Text style={styles.contenttxt}>Wind</Text>
                         </View>
                         <View style={styles.container}>
-                            {/* icon */}
-                            {/* <Text></Text> */}
-                            <Text style={styles.commontxt}>Humidity</Text>
+                            <Humidity style={{ width: 24, height: 24 }} />
+                            <Text style={[{ fontSize: 14 }, styles.commontxt]}>24%</Text>
+                            <Text style={styles.contenttxt}>Humidity</Text>
                         </View>
                         <View style={styles.container}>
-                            {/* icon */}
-                            {/* <Text></Text> */}
-                            <Text style={styles.commontxt}>Anything</Text>
+                            <Dewpoint />
+                            <Text style={[{ fontSize: 14 }, styles.commontxt]} >15.5 °C</Text>
+                            <Text style={styles.contenttxt}>Dew Point</Text>
                         </View>
                     </View>
                 </View>
@@ -128,6 +127,7 @@ const styles = StyleSheet.create({
     },
     commontxt: {
         color: 'white',
+        fontFamily: 'NotoSans-Regular'
     },
     bodywrapper: {
         flex: 0.8,
@@ -144,9 +144,9 @@ const styles = StyleSheet.create({
     },
     weathersvgstyle: {
         width: '100%',
-        height: '50%',
+        height: '55%',
         position: 'absolute',
-        top: 60,
+        top: 50,
         zIndex: -1,
     },
     detailswrapper: {
@@ -154,18 +154,26 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     },
     temperature: {
-        flex: 0.6,
+        flex: 0.48,
         flexDirection: 'row',
-        paddingLeft: 20
+        width: '100%',
+        paddingLeft: 20,
+        alignItems: 'center',
     },
     temptext: {
-        fontSize: 160
+        fontSize: 160,
+        fontFamily: 'NotoSans-Bold',
     },
     degreesymbol: {
-        fontSize: 50
+        width: 30,
+        fontSize: 50,
+        fontFamily: 'NotoSans-Medium',
+        paddingBottom: 14,
     },
     details: {
-        alignItems: 'center'
+        flex: 0.15,
+        alignItems: 'center',
+        paddingBottom: 15,
     },
     contentwrapper: {
         flex: 0.2,
@@ -180,10 +188,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
         width: '80%',
-        // backgroundColor: 'red',
         borderTopWidth: 2,
         borderStyle: 'solid',
         borderColor: 'rgba(255,255,255,0.3)',
-
+    },
+    contenttxt: {
+        fontSize: 12,
+        color: 'white',
+        opacity: 0.6
     },
 });
