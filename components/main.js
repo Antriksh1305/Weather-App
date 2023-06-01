@@ -1,46 +1,20 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Dimensions, Button } from 'react-native';
+import WeatherIconComponent from './weathericon';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
 
 //Vector-icons
-import Octicons from '@expo/vector-icons/Octicons';
-import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Feather from '@expo/vector-icons/Feather';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 //Svgs and Images
 import { SvgUri } from 'react-native-svg';
-import ClearDay from '../assets/images/clearday';
-import Cloud from '../assets/images/cloud';
-import Drizzle from '../assets/images/drizzle';
-import Rain from '../assets/images/rain';
-import Thunderstorm from '../assets/images/thunderstorm';
-import Snow from '../assets/images/snow';
 import Humidity from '../assets/images/humidity';
 import Dewpoint from '../assets/images/dewpoint';
-// import { Image } from 'expo-image';
 
 export default function main() {
-    const [fontsLoaded] = useFonts({
-        'NotoSans-Regular': require("../assets/fonts/NotoSans-Regular.ttf"),
-        'NotoSans-Medium': require("../assets/fonts/NotoSans-Medium.ttf"),
-        'NotoSans-SemiBold': require("../assets/fonts/NotoSans-SemiBold.ttf"),
-        'NotoSans-Bold': require("../assets/fonts/NotoSans-Bold.ttf"),
-        'NotoSans-ExtraBold': require("../assets/fonts/NotoSans-ExtraBold.ttf"),
-    });
-    useEffect(() => {
-        async function prepare() {
-            await SplashScreen.preventAutoHideAsync();
-        }
-        prepare();
-    }, [])
-
-    if (!fontsLoaded) {
-        return undefined;
-    } else {
-        SplashScreen.hideAsync();
+    const [icon,seticon] = useState('clear');
+    function changeicon() {
+        seticon('cloud');
     }
 
     return (
@@ -49,10 +23,9 @@ export default function main() {
                 <View style={[styles.container, styles.bodywrapper]}>
                     <View style={[styles.container, styles.headerwrapper]}>
                         <Feather name='map-pin' size={24} style={{ color: 'white', paddingRight: 8, paddingBottom: 4 }} />
-                        {/* <Octicons name='location' size={24} style={{color: 'white',paddingRight: 10}} /> */}
                         <Text style={[styles.commontxt, styles.location]}>Pratapgarh</Text>
                     </View>
-                    <ClearDay style={styles.weathersvgstyle} />
+                    <WeatherIconComponent tag={icon} style={styles.weathersvgstyle} width={'100%'} height={'58%'} />
                     <View style={[styles.container, styles.detailswrapper]}>
                         <View style={[styles.container, styles.temperature]}>
                             <Text style={[styles.commontxt, { fontFamily: 'NotoSans-Bold' }, { fontSize: 160, }]}>11</Text>
@@ -78,7 +51,7 @@ export default function main() {
                         </View>
                         <View style={styles.container}>
                             <Dewpoint />
-                            <Text style={[{ fontSize: 14 }, styles.commontxt]} >15.5 °C</Text>
+                            <Text style={[{ fontSize: 14 }, styles.commontxt]}>15.5 °C</Text>
                             <Text style={styles.contenttxt}>Dew Point</Text>
                         </View>
                     </View>
@@ -143,15 +116,13 @@ const styles = StyleSheet.create({
         fontSize: 27,
     },
     weathersvgstyle: {
-        width: '100%',
-        height: '55%',
         position: 'absolute',
-        top: 50,
+        top: 30,
         zIndex: -1,
     },
     detailswrapper: {
         flex: 0.87,
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
     },
     temperature: {
         flex: 0.48,
@@ -166,9 +137,10 @@ const styles = StyleSheet.create({
     },
     degreesymbol: {
         width: 30,
-        fontSize: 50,
-        fontFamily: 'NotoSans-Medium',
+        fontSize: 44,
+        fontFamily: 'NotoSans-Regular',
         paddingBottom: 14,
+        opacity: 0.6
     },
     details: {
         flex: 0.15,
