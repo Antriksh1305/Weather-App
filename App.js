@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
 //Components
 import Main from './components/main';
@@ -8,8 +8,12 @@ import Predictions from './components/predictions';
 //For Custom Fonts
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import Lottie from 'lottie-react-native';
 
-export default function App() {
+export default function App(props) {
+  const [anim, setanim] = useState(true);
+  const [UI, setUI] = useState(true);
+
   const [fontsLoaded] = useFonts({
     'NotoSans-Regular': require("./assets/fonts/NotoSans-Regular.ttf"),
     'NotoSans-Medium': require("./assets/fonts/NotoSans-Medium.ttf"),
@@ -23,22 +27,34 @@ export default function App() {
     }
     prepare();
   }, [])
-
   if (!fontsLoaded) {
     return undefined;
   } else {
     SplashScreen.hideAsync();
   }
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <Main />
-      <Predictions />
-    </SafeAreaView>
-  );
+  setTimeout(() => { setanim(false) }, 3000);
+  if (anim) {
+    return (
+      <SafeAreaView style={styles.loader}>
+        <Lottie source={require('./assets/animation/animation.json')} autoPlay loop />
+      </SafeAreaView>
+    );
+  } else {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Main UI={UI} handleUIchange={setUI} />
+        <Predictions UI={UI} handleUIchange={setUI} />
+      </SafeAreaView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
+  loader: {
+    flex: 1,
+    backgroundColor: '#080c1c',
+  },
   container: {
     flex: 1,
     backgroundColor: '#080c1c',

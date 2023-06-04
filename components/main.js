@@ -1,39 +1,52 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import WeatherIconComponent from './weathericon';
+import { bannerup, bannerdown } from './stylemain';
 import { LinearGradient } from 'expo-linear-gradient';
 
 //Vector-icons
 import Feather from '@expo/vector-icons/Feather';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 //Svgs and Images
 import { SvgUri } from 'react-native-svg';
 import Humidity from '../assets/images/humidity';
 import Dewpoint from '../assets/images/dewpoint';
 
-export default function main() {
-    const [icon,seticon] = useState('clear');
+export default function main({ UI, handleUIchange }) {
+    const [icon, seticon] = useState('Clear');
     function changeicon() {
-        seticon('cloud');
+        seticon('Cloud');
     }
-
+    const styles = UI ? bannerdown : bannerup;
+    const heading = UI ? 'Pratapgarh' : '7 days';
     return (
         <LinearGradient colors={['#11ACFE', '#139AFB', '#158FF7', '#158AF5', '#1378F3']} locations={[0.0, 0.47, 0.6, 0.75, 1]} style={styles.linearGradient} >
             <View style={[styles.body, styles.container]}>
                 <View style={[styles.container, styles.bodywrapper]}>
                     <View style={[styles.container, styles.headerwrapper]}>
-                        <Feather name='map-pin' size={24} style={{ color: 'white', paddingRight: 8, paddingBottom: 4 }} />
-                        <Text style={[styles.commontxt, styles.location]}>Pratapgarh</Text>
+                        {/* {!UI ? (<MaterialIcons name="keyboard-arrow-left" size={24} color="white" style={styles.backbtn} />) : null} */}
+                        {!UI ? (<TouchableOpacity style={styles.backbtn} onPress={() => {
+                            handleUIchange(!UI);
+                            console.log('handlingUIchange');
+                        }}>
+                            <Ionicons name="md-arrow-back-circle-outline" size={30} color="white" />
+                        </TouchableOpacity>
+                        ) : null}
+                        <Feather name={UI ? 'map-pin' : 'calendar'} size={24} style={styles.headicon} />
+                        <Text style={[styles.commontxt, styles.location]}>{heading}</Text>
                     </View>
-                    <WeatherIconComponent tag={icon} style={styles.weathersvgstyle} width={'100%'} height={'58%'} />
+                    <WeatherIconComponent tag={icon} style={styles.weathersvgstyle} width={UI ? '100%' : '50%'} height={UI ? '58%' : '100%'} />
                     <View style={[styles.container, styles.detailswrapper]}>
-                        <View style={[styles.container, styles.temperature]}>
-                            <Text style={[styles.commontxt, { fontFamily: 'NotoSans-Bold' }, { fontSize: 160, }]}>11</Text>
+                        <View style={styles.temperature}>
+                            <Text style={[styles.commontxt, styles.temptext]}>21</Text>
                             <Text style={[styles.commontxt, styles.degreesymbol]}>°</Text>
                         </View>
                         <View style={styles.details}>
-                            <Text style={[styles.commontxt, { fontFamily: 'NotoSans-Regular', fontSize: 26 }]}>Sunny Day</Text>
-                            <Text style={[styles.commontxt, { fontFamily: 'NotoSans-Regular' }]}>Monday, 29 May</Text>
+                            {!UI ? (<View style={styles.today}><Text style={[styles.commontxt, { fontSize: 24, fontFamily: 'NotoSans-Medium' }]} >Today</Text></View>) : null}
+                            <Text style={[styles.commontxt, styles.detailsbox1]}>Sunny Day</Text>
+                            {UI ? (<Text style={[styles.commontxt]}>Monday, 29 May</Text>) : null}
                         </View>
                     </View>
                 </View>
@@ -41,17 +54,17 @@ export default function main() {
                     <View style={styles.content}>
                         <View style={styles.container}>
                             <Feather name='wind' size={24} style={{ color: '#fff' }} />
-                            <Text style={[{ fontSize: 14 }, styles.commontxt]}>13 km/h</Text>
+                            <Text style={styles.commontxt}>13 km/h</Text>
                             <Text style={styles.contenttxt}>Wind</Text>
                         </View>
                         <View style={styles.container}>
                             <Humidity style={{ width: 24, height: 24 }} />
-                            <Text style={[{ fontSize: 14 }, styles.commontxt]}>24%</Text>
+                            <Text style={styles.commontxt}>24%</Text>
                             <Text style={styles.contenttxt}>Humidity</Text>
                         </View>
                         <View style={styles.container}>
                             <Dewpoint />
-                            <Text style={[{ fontSize: 14 }, styles.commontxt]}>15.5 °C</Text>
+                            <Text style={styles.commontxt}>15.5 °C</Text>
                             <Text style={styles.contenttxt}>Dew Point</Text>
                         </View>
                     </View>
@@ -61,112 +74,3 @@ export default function main() {
         </LinearGradient>
     );
 }
-
-const styles = StyleSheet.create({
-    linearGradient: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 5,
-        height: '79%',
-        width: '100%',
-        marginHorizontal: 10,
-        position: 'absolute',
-        top: 5,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        borderBottomRightRadius: 68,
-        borderBottomLeftRadius: 68,
-    },
-    shadow: {
-        backgroundColor: '#053882',
-        zIndex: -1,
-        position: 'absolute',
-        height: '100%',
-        width: '93%',
-        top: 10,
-        borderTopLeftRadius: 0,
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 60,
-        borderBottomLeftRadius: 60,
-    },
-    body: {
-        marginTop: 30,
-    },
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-    },
-    commontxt: {
-        color: 'white',
-        fontFamily: 'NotoSans-Regular'
-    },
-    bodywrapper: {
-        flex: 0.8,
-    },
-    headerwrapper: {
-        flex: 0.13,
-        flexDirection: 'row',
-        alignItems: 'flex-end',
-        paddingRight: 20,
-    },
-    location: {
-        fontFamily: 'NotoSans-SemiBold',
-        fontSize: 27,
-    },
-    weathersvgstyle: {
-        position: 'absolute',
-        top: 30,
-        zIndex: -1,
-    },
-    detailswrapper: {
-        flex: 0.87,
-        justifyContent: 'flex-end',
-    },
-    temperature: {
-        flex: 0.48,
-        flexDirection: 'row',
-        width: '100%',
-        paddingLeft: 20,
-        alignItems: 'center',
-    },
-    temptext: {
-        fontSize: 160,
-        fontFamily: 'NotoSans-Bold',
-    },
-    degreesymbol: {
-        width: 30,
-        fontSize: 44,
-        fontFamily: 'NotoSans-Regular',
-        paddingBottom: 14,
-        opacity: 0.6
-    },
-    details: {
-        flex: 0.15,
-        alignItems: 'center',
-        paddingBottom: 15,
-    },
-    contentwrapper: {
-        flex: 0.2,
-        justifyContent: 'space-around',
-    },
-    divider: {
-        flex: 0.5,
-    },
-    content: {
-        flex: 0.8,
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        width: '80%',
-        borderTopWidth: 2,
-        borderStyle: 'solid',
-        borderColor: 'rgba(255,255,255,0.3)',
-    },
-    contenttxt: {
-        fontSize: 12,
-        color: 'white',
-        opacity: 0.6
-    },
-});

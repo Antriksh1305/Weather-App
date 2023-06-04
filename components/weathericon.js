@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+// import { StyleSheet, Text, View, Dimensions } from 'react-native';
 
 //Svgs and Images
 import ClearDay from '../assets/images/clearday';
@@ -11,17 +11,17 @@ import Snow from '../assets/images/snow';
 
 class WeatherIconComponent extends Component {
     components = {
-        clear: ClearDay,
-        cloud: Cloud,
-        rain: Rain,
-        snow: Snow,
-        thunderstorm: Thunderstorm,
-        drizzle: Drizzle,
+        Clear: ClearDay,
+        Cloud: Cloud,
+        Rain: Rain,
+        Snow: Snow,
+        Thunderstorm: Thunderstorm,
+        Drizzle: Drizzle,
     };
     render(...props) {
         const TagName = this.components[this.props.tag || 'clear'];
         const st = this.props.style;
-        console.log(st);
+        // console.log(st);
         return <TagName style={st} width={this.props.width} height={this.props.height} />
     }
 }
