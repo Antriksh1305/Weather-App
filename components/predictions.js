@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import WeatherIconComponent from './weathericon';
-import { bannerup, bannerdown } from './stylepredictions';
+import { bannerup, bannerdown } from './styles/stylepredictions';
 
 //Vector-icons
 import { MaterialIcons } from '@expo/vector-icons';

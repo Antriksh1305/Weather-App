@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 // import { StyleSheet, Text, View, Dimensions } from 'react-native';
 
 //Svgs and Images
-import ClearDay from '../assets/images/clearday';
-import Cloud from '../assets/images/cloud';
-import Drizzle from '../assets/images/drizzle';
-import Rain from '../assets/images/rain';
-import Thunderstorm from '../assets/images/thunderstorm';
-import Snow from '../assets/images/snow';
+import ClearDay from '../assets/svgs/clearday';
+import Cloud from '../assets/svgs/cloud';
+import Drizzle from '../assets/svgs/drizzle';
+import Rain from '../assets/svgs/rain';
+import Thunderstorm from '../assets/svgs/thunderstorm';
+import Snow from '../assets/svgs/snow';
 
 class WeatherIconComponent extends Component {
     components = {

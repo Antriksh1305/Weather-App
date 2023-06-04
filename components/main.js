@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import WeatherIconComponent from './weathericon';
-import { bannerup, bannerdown } from './stylemain';
+import { bannerup, bannerdown } from './styles/stylemain';
 import { LinearGradient } from 'expo-linear-gradient';
 
 //Vector-icons
@@ -11,8 +11,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 //Svgs and Images
 import { SvgUri } from 'react-native-svg';
-import Humidity from '../assets/images/humidity';
-import Dewpoint from '../assets/images/dewpoint';
+import Humidity from '../assets/svgs/humidity';
+import Dewpoint from '../assets/svgs/dewpoint';
 
 export default function main({ UI, handleUIchange }) {
     const [icon, seticon] = useState('Clear');
