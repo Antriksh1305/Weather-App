@@ -21,7 +21,6 @@ class WeatherIconComponent extends Component {
     render(...props) {
         const TagName = this.components[this.props.tag || 'clear'];
         const st = this.props.style;
-        // console.log(st);
         return <TagName style={st} width={this.props.width} height={this.props.height} />
     }
 }

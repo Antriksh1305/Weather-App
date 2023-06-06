@@ -15,7 +15,7 @@ function SvgComponent(props) {
                 >
                     <Stop offset={0} stopColor="#3392d6" />
                     <Stop offset={0.45} stopColor="#3392d6" />
-                    <Stop offset={1} stopColor="#2477b2" />
+                    <Stop offset={1} stopColor="#2271a9" />
                 </LinearGradient>
             </Defs>
             <G id="Layer_2" data-name="Layer 2">
