@@ -16,11 +16,9 @@ import Dewpoint from '../assets/svgs/dewpoint';
 
 export default function main(props) {
     function handleicon() {
-        console.log('reached here');
         return props.handleiconchange(findicon(props.data.currentConditions.icon).icon);
     }
     function handledesc(){
-        console.log('reached desc');
         return props.handledesc(findicon(props.data.currentConditions.icon).desc);
     }
     useEffect(() => {
@@ -47,7 +45,7 @@ export default function main(props) {
                     <WeatherIconComponent tag={props.icon} style={styles.weathersvgstyle} width={props.UI ? '100%' : '50%'} height={props.UI ? '58%' : '100%'} />
                     <View style={[styles.container, styles.detailswrapper]}>
                         <View style={styles.temperature}>
-                            <Text style={[styles.commontxt, styles.temptext]}>{Math.round(props.data.currentConditions.temp)}</Text>
+                            <Text style={[styles.commontxt, styles.temptext]}>{Math.round(props.data.days[0].hours[new Date().getHours()].temp)}</Text>
                             <Text style={[styles.commontxt, styles.degreesymbol]}>°</Text>
                         </View>
                         <View style={styles.details}>

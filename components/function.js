@@ -66,7 +66,6 @@ const svg = [
 ];
 function findicon(svgname) {
       let i = 0, x = svgname, lower, upper;
-      console.log(x);
       let found = svg.find((ele) => {
             lower = x.includes(svg[i].icon[0].toLowerCase() + svg[i].icon.substring(1, svg[i].icon.length));
             upper = x.includes(svg[i].icon);
@@ -75,7 +74,6 @@ function findicon(svgname) {
             }
             i++;
       })
-      console.log(found);
       if( found == undefined ){
             return svg[4];
       }

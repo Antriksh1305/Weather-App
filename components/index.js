@@ -12,7 +12,6 @@ import Lottie from 'lottie-react-native';
 
 export default function index() {
       //States
-      const [anim, setanim] = useState(true);
       const [UI, setUI] = useState(true);
       const [icon, seticon] = useState('Clear');
       const [desc, setdesc] = useState('');
@@ -21,12 +20,10 @@ export default function index() {
       
       //API Fetch
       const fetchData = async () => {
-            const resp = await fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Meghalaya?unitGroup=metric&include=current%2Chours%2Cdays&key=V4NWW9BW4QAPUGQPNU48HWNT8&contentType=json");
+            const resp = await fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Pratapgarh?unitGroup=metric&include=current%2Chours%2Cdays&key=MFJ2G3Q9DWTJZXA6ZJPR5589J&contentType=json");
             const data = await resp.json();
             setData(data);
             setLoading(false);
-            datarec = data;
-            console.log('hit');
       };
       
       useEffect(() => {
@@ -36,12 +33,6 @@ export default function index() {
       //Fonts
       font();
 
-      //Loading Page and Main Page 
-      // setTimeout(() => {
-      //       setanim(false);
-      // }, 3000);
-
-      // if (anim) {
       if(data == ''){ 
             fetchData();
             console.log('no data on loading section');
@@ -52,11 +43,10 @@ export default function index() {
             );
       }
       else {
-            // handleicon();
             return (
                   <SafeAreaView style={styles.container}>
-                        {data && <Main UI={UI} handleUIchange={setUI} icon={icon} desc={desc} handleiconchange={seticon} handledesc={setdesc} data={data} arr={findday()} />}
-                        {data && <Predictions UI={UI} handleUIchange={setUI} icon={icon} />}
+                        <Main UI={UI} handleUIchange={setUI} icon={icon} desc={desc} handleiconchange={seticon} handledesc={setdesc} data={data} arr={findday()} />
+                        <Predictions UI={UI} handleUIchange={setUI} icon={icon} data={data} />
                   </SafeAreaView>
             );
       }
