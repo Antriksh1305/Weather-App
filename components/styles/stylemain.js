@@ -25,7 +25,6 @@ const bannerup = StyleSheet.create({
         borderBottomRightRadius: 60,
         borderBottomLeftRadius: 60,
         shadowColor: '#158FF7',
-        // shadowOffset: ,
     },
     body: {
         marginTop: 30,
@@ -88,7 +87,6 @@ const bannerup = StyleSheet.create({
         top: -5,
         zIndex: 10,
         paddingLeft: 150,
-        // paddingBottom: 20,
     },
     temptext: {
         fontSize: 100,

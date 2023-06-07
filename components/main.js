@@ -18,7 +18,7 @@ export default function main(props) {
     function handleicon() {
         return props.handleiconchange(findicon(props.data.currentConditions.icon).icon);
     }
-    function handledesc(){
+    function handledesc() {
         return props.handledesc(findicon(props.data.currentConditions.icon).desc);
     }
     useEffect(() => {
@@ -26,13 +26,12 @@ export default function main(props) {
         handledesc();
     }, [])
     const styles = props.UI ? bannerdown : bannerup;
-   
+
     return (
         <LinearGradient colors={['#11ACFE', '#139AFB', '#158FF7', '#158AF5', '#1378F3']} locations={[0.0, 0.47, 0.6, 0.75, 1]} style={styles.linearGradient} >
             <View style={[styles.body, styles.container]}>
                 <View style={[styles.container, styles.bodywrapper]}>
                     <View style={[styles.container, styles.headerwrapper]}>
-                        {/* {!props.UI ? (<MaterialIcons name="keyboard-arrow-left" size={24} color="white" style={styles.backbtn} />) : null} */}
                         {!props.UI ? (<TouchableOpacity style={styles.backbtn} onPress={() => {
                             props.handleUIchange(!props.UI);
                         }}>
@@ -40,7 +39,7 @@ export default function main(props) {
                         </TouchableOpacity>
                         ) : null}
                         <Feather name={props.UI ? 'map-pin' : 'calendar'} size={24} style={styles.headicon} />
-                        <Text style={[styles.commontxt, styles.location]}>{props.UI ? props.data.address : '7 days'}</Text>
+                        <Text style={[styles.commontxt, styles.location]}>{props.UI ? props.address : '7 days'}</Text>
                     </View>
                     <WeatherIconComponent tag={props.icon} style={styles.weathersvgstyle} width={props.UI ? '100%' : '50%'} height={props.UI ? '58%' : '100%'} />
                     <View style={[styles.container, styles.detailswrapper]}>

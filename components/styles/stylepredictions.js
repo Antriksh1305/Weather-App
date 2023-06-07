@@ -10,9 +10,6 @@ const bannerup = StyleSheet.create({
         height: '60%',
         width: '100%',
         position: 'relative',
-        // flex: 1,
-        // alignItems: 'stretch',
-        // zIndex: 11
     },
     flatlist: {
         paddingTop: 30,
