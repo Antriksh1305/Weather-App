@@ -1,4 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
+
+console.log(`height: ${height}, width: ${width}`);
 
 const bannerup = StyleSheet.create({
     linearGradient: {
@@ -78,34 +83,40 @@ const bannerup = StyleSheet.create({
         fontSize: 20,
         flex: 0,
     },
+    todaytxt: {
+        fontSize: height/35, 
+        fontFamily: 'NotoSans-Medium',
+    },
     temperature: {
         flex: 1,
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'center',
-        position: 'absolute',
-        top: -5,
-        zIndex: 10,
-        paddingLeft: 150,
+        position: 'relative',
+        top: height/159.5,
+        left: width/7.2,
     },
     temptext: {
-        fontSize: 100,
+        fontSize: width/5.2,
         fontFamily: 'NotoSans-Bold',
     },
     degreesymbol: {
-        fontSize: 48,
+        fontSize: width/11,
         opacity: 0.6,
         paddingTop: 20,
     },
     details: {
-        flex: 1,
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'space-between',
         width: '100%',
-        paddingLeft: 100,
+        position: 'absolute',
+        left: width/1.95,
     },
     detailsbox1: {
         opacity: 0.5,
+        width: '100%',
+        position: 'absolute',
+        top: height/11,
     },
     contentwrapper: {
         flex: 0.32,
@@ -182,8 +193,8 @@ const bannerdown = StyleSheet.create({
     },
     headicon: {
         color: 'white', 
-        paddingRight: 8, 
-        paddingBottom: 4,
+        paddingRight: 8,
+        paddingBottom: 6,
     },
     location: {
         fontFamily: 'NotoSans-SemiBold',
@@ -207,14 +218,14 @@ const bannerdown = StyleSheet.create({
         justifyContent: 'center',
     },
     temptext: {
-        fontSize: 160,
+        fontSize: height/5.6,
         fontFamily: 'NotoSans-Bold',
     },
     degreesymbol: {
         width: 30,
-        fontSize: 44,
+        fontSize: height/17,
         fontFamily: 'NotoSans-Regular',
-        paddingBottom: 14,
+        paddingBottom: 30,
         opacity: 0.6
     },
     details: {
@@ -224,7 +235,7 @@ const bannerdown = StyleSheet.create({
         paddingRight: 10,
     },
     detailsbox1: {
-        fontSize: 24,
+        fontSize: height/34,
     },
     contentwrapper: {
         flex: 0.2,

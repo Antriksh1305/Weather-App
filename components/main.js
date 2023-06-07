@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
 import WeatherIconComponent from './weathericon';
 import { bannerup, bannerdown } from './styles/stylemain';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -26,7 +26,8 @@ export default function main(props) {
         handledesc();
     }, [])
     const styles = props.UI ? bannerdown : bannerup;
-
+    const width = Dimensions.get('window').width;
+    const height = Dimensions.get('window').height;
     return (
         <LinearGradient colors={['#11ACFE', '#139AFB', '#158FF7', '#158AF5', '#1378F3']} locations={[0.0, 0.47, 0.6, 0.75, 1]} style={styles.linearGradient} >
             <View style={[styles.body, styles.container]}>
@@ -48,8 +49,8 @@ export default function main(props) {
                             <Text style={[styles.commontxt, styles.degreesymbol]}>°</Text>
                         </View>
                         <View style={styles.details}>
-                            {!props.UI ? (<View style={styles.today}><Text style={[styles.commontxt, { fontSize: 24, fontFamily: 'NotoSans-Medium' }]}>Today</Text></View>) : null}
-                            <Text style={[styles.commontxt, styles.detailsbox1]}>{props.desc}</Text>
+                            {!props.UI ? (<View style={styles.today}><Text style={[styles.commontxt, styles.todaytxt ]}>Today</Text></View>) : null}
+                            <View><Text style={[styles.commontxt, styles.detailsbox1]}>{props.desc}</Text></View>
                             {props.UI ? (<Text style={[styles.commontxt]}>{props.arr[0]}, {props.arr[2]} {props.arr[1]}</Text>) : null}
                         </View>
                     </View>
@@ -57,17 +58,17 @@ export default function main(props) {
                 <View style={[styles.container, styles.contentwrapper]}>
                     <View style={styles.content}>
                         <View style={styles.container}>
-                            <Feather name='wind' size={24} style={{ color: '#fff' }} />
+                            <Feather name='wind' size={width/17} style={{ color: '#fff' }} />
                             <Text style={styles.commontxt}>{Math.round(props.data.currentConditions.windspeed)} km/h</Text>
                             <Text style={styles.contenttxt}>Wind</Text>
                         </View>
                         <View style={styles.container}>
-                            <Humidity style={{ width: 24, height: 24 }} />
+                            <Humidity style={{ width: width/17, height: width/15 }} />
                             <Text style={styles.commontxt}>{props.data.currentConditions.humidity.toString().substring(0, 4)} %</Text>
                             <Text style={styles.contenttxt}>Humidity</Text>
                         </View>
                         <View style={styles.container}>
-                            <Dewpoint />
+                            <Dewpoint style={{width: width/17, height: height/17}}/>
                             <Text style={styles.commontxt}>{props.data.currentConditions.dew} °C</Text>
                             <Text style={styles.contenttxt}>Dew Point</Text>
                         </View>

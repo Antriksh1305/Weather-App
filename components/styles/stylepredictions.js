@@ -47,7 +47,7 @@ const bannerdown = StyleSheet.create({
     footer: {
         height: '20%',
         position: 'absolute',
-        bottom: 0,
+        bottom: 5,
         flex: 0,
         alignItems: 'center',
     },

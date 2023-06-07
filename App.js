@@ -19,7 +19,6 @@ export default function App() {
             else {
                 let s = await Location.requestBackgroundPermissionsAsync();
             }
-            console.log(status);
             function getCurrentLocation() {
                 const timeout = 10000;
                 return new Promise(async (resolve, reject) => {
@@ -30,16 +29,12 @@ export default function App() {
             }
             const currentLocation =  await getCurrentLocation();
                 setLocation(currentLocation);
-                console.log("Location:");
-                console.log(currentLocation);
         };
         getPermissions();
     }, []);
 
-    if (location == undefined) console.log('no location');
     if (location != undefined) return <Index location={location} />;
     else {
-        console.log('here 1');
         return (
             <SafeAreaView style={styles.loader}>
                 <Lottie source={require('./assets/animation/animation.json')} autoPlay loop />
