@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { StyleSheet, Text, View, Dimensions } from 'react-native';
 
 //Svgs and Images
 import ClearDay from '../assets/svgs/clearday';

@@ -3,13 +3,25 @@ import { StyleSheet, Dimensions } from 'react-native';
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
-console.log(`height: ${height}, width: ${width}`);
-
 const bannerup = StyleSheet.create({
-    linearGradient: {
+    Mainview: {
         alignItems: 'center',
         justifyContent: 'center',
         height: '40%',
+        width: '100%',
+        marginHorizontal: 10,
+        borderRadius: 5,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderBottomRightRadius: 68,
+        borderBottomLeftRadius: 68,
+        position: 'relative',
+        top: -(height*40/100),
+    },
+    linearGradient: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
         width: '100%',
         marginHorizontal: 10,
         borderRadius: 5,
@@ -143,11 +155,27 @@ const bannerup = StyleSheet.create({
 });
 
 const bannerdown = StyleSheet.create({
-    linearGradient: {
+    Mainview: {
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 5,
         height: '79%',
+        width: '100%',
+        marginHorizontal: 10,
+        position: 'absolute',
+        top: 5,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderBottomRightRadius: 68,
+        borderBottomLeftRadius: 68,
+        position: 'relative',
+        top: -(height*79/100),
+    },
+    linearGradient: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5,
+        height: '100%',
         width: '100%',
         marginHorizontal: 10,
         position: 'absolute',

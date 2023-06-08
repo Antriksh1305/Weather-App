@@ -5,7 +5,7 @@ import * as Location from 'expo-location';
 //Components
 import Main from './main';
 import Predictions from './predictions';
-import { findday, findicon } from './function';
+import { findday } from './function';
 import { font } from './font';
 
 //For Custom Fonts

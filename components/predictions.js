@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import React from 'react';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+
 import WeatherIconComponent from './weathericon';
 import { findicon } from './function';
 
