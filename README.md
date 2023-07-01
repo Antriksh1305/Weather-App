@@ -7,7 +7,7 @@
 
 ## Description
 
-The Weather App is a beautifully designed mobile application that keeps you informed about the weather conditions. With its intuitive user interface, inspired by a Dribbble design, the app offers a delightful experience for iOS and Android users.
+The Weather App is a beautifully designed mobile application that keeps you informed about the weather conditions. With its intuitive user interface, inspired by a Dribbble design, the app offers a delightful experience for Android users.
 
 <p>
   <p>
