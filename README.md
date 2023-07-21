@@ -43,16 +43,16 @@ If you're a developer and want to modify the Weather App, you can clone the GitH
 
 1. Clone the repository:
    ```bash
-   $ git clone https://github.com/your-username/WeatherApp.git```
+   $ git clone https://github.com/your-username/WeatherApp.git
 2. Change to the cloned directory:
    ```bash
-   $ cd WeatherApp```
+   $ cd WeatherApp
 3. Install the dependencies:
    ```bash
-   $ npm install```
+   $ npm install
 4. Start the development server:
    ```bash
-   $ npm start```
+   $ npm start
 This will launch the development server using Expo, enabling you to make the necessary changes to the app.
 
 ## Contributing
