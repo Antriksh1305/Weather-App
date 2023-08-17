@@ -25,7 +25,7 @@ To bring the app to life, we've incorporated two animation libraries:
 
 ## Download
 
-You can download the app from the following link: <b>[Weather App Download](https://expo.dev/artifacts/eas/hbxmzCFamofpdknHibWiwe.apk)</b>
+You can download the app from the following link: <b>[Weather App Download](https://expo.dev/artifacts/eas/sbJv7BsvfPhArW22GiB7iF.apk)</b>
 
 Alternatively, you can access the app directly without downloading by following these steps:
 1. Download the Expo Go app from the Google Play Store or the App Store.
